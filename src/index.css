@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Caveat:wght@400;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0096d6;
+  --color-primary-dark: #0077ab;
+  --color-primary-light: #33abdf;
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 150, 214, 0.5), 0 0 40px rgba(0, 150, 214, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(0, 150, 214, 0.8), 0 0 60px rgba(0, 150, 214, 0.5);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Raleway', sans-serif;
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-black/30 backdrop-blur-md border border-white/10;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/50;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold px-8 py-4 rounded-full transition-all duration-300;
+  }
+
+  .section {
+    @apply min-h-screen flex items-center justify-center px-4 py-20;
+  }
+
+  .section-dark {
+    @apply bg-black;
+  }
+
+  .section-light {
+    @apply bg-white text-gray-900;
+  }
+
+  .section-gradient {
+    @apply bg-gradient-to-b from-black via-primary/10 to-black;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary-light to-primary;
+  }
+
+  .card-glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/30;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 30px rgba(0, 150, 214, 0.6);
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  font-size: 11.5px;
+  /* Scales down all rem-based UI to ~80% of original size */
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0096D6;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0077AB;
+}
+
+/* Tailwind Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
